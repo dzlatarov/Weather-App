@@ -1,0 +1,48 @@
+.currentDate {
+    padding: 36px;
+    background-color: skyblue;
+
+    .cardWrapper {
+        display: flex;
+        justify-content: center;
+
+        .temperatureWrapper {
+            width: 50%;
+            align-self: center;
+
+
+            .symbol {
+                font-size: 40px;
+                position: relative;
+                bottom: 30px;
+            }
+        }
+    }
+
+    .date {
+        font-family: 'Montserrat';
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 20px;
+        color: white;
+        text-transform: capitalize;
+    }
+
+    .description {
+        font-family: 'Montserrat';
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 20px;
+        color: white;
+        text-transform: capitalize;
+    }
+
+    .temperatureWrapper{
+        font-family: 'Montserrat';
+        font-weight: 700;
+        font-size: 60px;
+        line-height: 20px;
+        color: white;
+        text-transform: capitalize;
+    }
+}
