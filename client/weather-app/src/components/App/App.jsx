@@ -1521,11 +1521,11 @@ function App() {
 
 
   return (
-    <>
-      <div className='cardWrapper'>
-        <Weather currentWeather={currentWeather} />
-        <Forecast forecast={forecastList} />
-      </div>
+      <>
+        <div className='cardWrapper'>
+            <Weather currentWeather={currentWeather} />
+            <Forecast forecast={forecastList} />
+        </div>
     </>
   )
 }

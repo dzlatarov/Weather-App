@@ -1,23 +1,17 @@
 import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import weather from '../../apis/weather'
 import forecast from '../../apis/forecast'
 import unixTimestampConvertor from '../../util/unixTimeStampConvertor'
 import daysConverter from '../../util/daysConverter'
 import './Weather.css'
+import { WeatherContext } from '../WeatherContextProvider/WeatherContextProvider'
+import { useNavigate } from 'react-router-dom';
+import { addWeatherDetails, clearDetails } from '../../state/weather/weatherSlice'
 
 const Weather = ({ currentWeather }) => {
-    // const [latitude, setLatitude] = useState('')
-    // const [longtitude, setLongtitute] = useState('')
-    // const [currentWeather, setCurrentWeather] = useState({})
-
-//   useEffect(() => {
-//     if (latitude === '' && longtitude === '') {
-//       getLocation()
-//     } else {
-//       callWeatherAPI()
-//       // callForecastAPI()
-//     }
-    //   }, [latitude, longtitude])
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
     
     useEffect(() => {
         if (currentWeather.weather != undefined) {
@@ -40,7 +34,15 @@ const Weather = ({ currentWeather }) => {
         const response = weather.get(`?lat=${latitude}&lon=${longtitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}`).then((response) => {
         setCurrentWeather(response.data.weather[0])
         })
-    }
+  }
+
+  const addDetails = () => {
+    // addWeatherDetails(currentWeather.weather)
+    dispatch(addWeatherDetails(currentWeather))
+
+    console.log(`weather details ${currentWeather.weather.icon}`)
+    navigate('/singleWeather')
+  }
     
     // const callForecastAPI = () => {
   //   const response = forecast.get(`?lat=${latitude}&lon=${longtitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}`).then((response) => {
@@ -48,7 +50,7 @@ const Weather = ({ currentWeather }) => {
   //   })
   // }
   return (
-    <div className='currentDate'>
+    <div className='currentDate' onClick={addDetails}>
           {currentWeather && currentWeather.weather !== undefined && (
             <div className='cardWrapper'>
                 <div className='descriptionWrapper'>

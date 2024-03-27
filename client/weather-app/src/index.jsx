@@ -1,9 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { Provider } from 'react-redux'
 import App from '../src/components/App/App'
-import { SingleWeather } from '../src/components/SingleWeather/SingleWeather'
+import SingleWeather from './components/SingleWeather/SingleWeather'
 import { NotFoundPage } from './components/NotFoundPage/NotFoundPage'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { store } from './state/store'
 
 const router = createBrowserRouter([
     {
@@ -18,5 +20,7 @@ const router = createBrowserRouter([
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <RouterProvider router={router} />
+    <Provider store={store}>
+        <RouterProvider router={router} />
+    </Provider>
 )
