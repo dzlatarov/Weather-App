@@ -1,4 +1,38 @@
 .forecast {
     display: flex;
     justify-content: space-between;
+    margin-top: 1rem;
+    background-color: skyblue;
+
+    .forecastWrapper {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+
+        font-family: 'Montserrat';
+        font-weight: 700;
+        line-height: 20px;
+        color: white;
+        text-transform: capitalize;
+
+        .dateWrapper {
+            font-family: 'Montserrat';
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 20px;
+            color: white;
+            text-transform: capitalize;
+        }
+
+        .temperatureWrapper {
+            font-size: 25px;
+
+            .symbol {
+                margin-left: 2.5px;
+                font-size: 17px;
+                position: relative;
+                bottom: 13px;
+            }
+        }
+    }
 }
