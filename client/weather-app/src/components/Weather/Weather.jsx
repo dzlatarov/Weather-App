@@ -51,7 +51,7 @@ const Weather = ({ currentWeather }) => {
   //   })
   // }
   return (
-    <div className='currentDate' onClick={addDetails}>
+    <div data-testid='cypress-title' className='currentDate' onClick={addDetails}>
           {currentWeather && currentWeather.weather !== undefined && (
             <div className='cardWrapper'>
                 <div className='descriptionWrapper'>
