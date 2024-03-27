@@ -14,6 +14,8 @@ function App() {
   const [currentWeather, setCurrentWeather] = useState({})
   const [unit, setUnit] = useState('metric')
   const [forecastList, setForecastList] = useState([])
+  let units = localStorage.getItem("unit")  
+    
   const forecastListDDump = [
     {
             "dt": 1711530000,
@@ -1493,15 +1495,14 @@ function App() {
   const callWeatherAPI = () => {
     console.log(`latitude ${latitude}`)
     console.log(`longtitude ${longtitude}`)
-    setUnit('metric')
 
     // if (latitude !== '' && longtitude !== '') {
-    //   const response = weather.get(`?lat=${latitude}&lon=${longtitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}&units=${unit}`).then((response) => {
+    //   const response = weather.get(`?lat=${latitude}&lon=${longtitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}&units=${units}`).then((response) => {
     //     setCurrentWeather({ dt: response.data.dt, weather: response.data.weather[0], temperature: response.data.main.temp})
     //     console.log(response.data.main.temp)
     //   })
     // }
-    setCurrentWeather({ dt: 1711524828, weather: {id: 802, description: 'scattered clouds', icon: '03d'}, temperature: 11.01, unit: 'metric'})
+      setCurrentWeather({ dt: 1711524828, weather: { id: 802, description: 'scattered clouds', icon: '03d' }, temperature: 11.01 , unit: {units}})
   }
 
 
@@ -1519,12 +1520,21 @@ function App() {
     console.log(`converted date ${convertedDate}`)
   }
 
+    const savePreferences = (value) => {
+      localStorage.setItem("unit", value)
+      setUnit(value)  
+  }
+
 
   return (
       <>
-        <div className='cardWrapper'>
-            <Weather currentWeather={currentWeather} />
-            <Forecast forecast={forecastList} />
+          <div className='cardWrapper'>
+            <div className='unitWrapper'>
+                <button className='metricWrapper' onClick={() => savePreferences('metric')}>metric</button>
+                <button className='imperialWrapper' onClick={() => savePreferences('imperial')}>imperial</button>
+            </div>
+              <Weather currentWeather={currentWeather} />
+              <Forecast forecast={forecastList} />
         </div>
     </>
   )

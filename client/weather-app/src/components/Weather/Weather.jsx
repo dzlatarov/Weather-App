@@ -12,6 +12,7 @@ import { addWeatherDetails, clearDetails } from '../../state/weather/weatherSlic
 const Weather = ({ currentWeather }) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  let units = localStorage.getItem("unit")
     
     useEffect(() => {
         if (currentWeather.weather != undefined) {
@@ -61,7 +62,7 @@ const Weather = ({ currentWeather }) => {
                 <div className='temperatureWrapper'>
                       <span>{currentWeather.temperature.toFixed(0)}</span>
                       <span className='symbol'>o</span>
-                      <span>{ currentWeather.unit === 'metric' ? 'C' : 'F'}</span>
+                      {units !== undefined && (<span>{ units === 'metric' ? 'C' : 'F'}</span>)}
                 </div>
             </div>
           )}

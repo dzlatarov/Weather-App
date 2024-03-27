@@ -12,10 +12,10 @@ const filterForecast = (data) => {
     `Extended date ${nextDate.toLocaleDateString()} : Time ${nextDate.toLocaleTimeString()}`
   );
 
-  // for (const element of data.forecast) {
-  //   utcConverter(element.dt_txt);
-  //   // console.log(element);
-  // }
+  for (const element of data.forecast) {
+    utcConverter(element.dt_txt);
+    // console.log(element);
+  }
 
   let filteredList = data.forecast.filter((el) => {
     if (el.dt_txt !== undefined) {

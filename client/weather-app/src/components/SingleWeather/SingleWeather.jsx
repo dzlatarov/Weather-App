@@ -18,7 +18,7 @@ const SingleWeather = () => {
                 <div className='temperatureWrapper'>
                       <span>{data[0].temperature.toFixed(0)}</span>
                       <span className='symbol'>o</span>
-                      <span>{ data[0].unit === 'metric' ? 'C' : 'F'}</span>
+                      <span>{ data[0].unit.units === 'metric' ? 'C' : 'F'}</span>
                 </div>
             </div>
       )}

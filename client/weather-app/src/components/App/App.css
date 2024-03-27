@@ -2,4 +2,24 @@
   text-align: center;
   width: 600px;
   margin: 0 auto;
+
+  .unitWrapper {
+    float: right;
+    .metricWrapper {
+        font-weight: bold;
+        font-size: 1rem;
+        font-family: 'Montserrat';
+        line-height: 20px;
+        color: white;
+        background-color: gray;
+    }
+    .imperialWrapper {
+      font-weight: bold;
+        font-size: 1rem;
+        font-family: 'Montserrat';
+        line-height: 20px;
+        color: white;
+        background-color: gray;
+    }
+  }
 }
