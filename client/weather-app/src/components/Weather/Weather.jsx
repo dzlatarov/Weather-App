@@ -5,7 +5,6 @@ import forecast from '../../apis/forecast'
 import unixTimestampConvertor from '../../util/unixTimeStampConvertor'
 import daysConverter from '../../util/daysConverter'
 import './Weather.css'
-import { WeatherContext } from '../WeatherContextProvider/WeatherContextProvider'
 import { useNavigate } from 'react-router-dom';
 import { addWeatherDetails, clearDetails } from '../../state/weather/weatherSlice'
 
@@ -55,7 +54,7 @@ const Weather = ({ currentWeather }) => {
           {currentWeather && currentWeather.weather !== undefined && (
             <div className='cardWrapper'>
                 <div className='descriptionWrapper'>
-                   <div className='date'>{daysConverter(unixTimestampConvertor(currentWeather.dt))}</div>
+                   <div data-testid='date' className='date'>{daysConverter(unixTimestampConvertor(currentWeather.dt))}</div>
                     <img src={`https://openweathermap.org/img/wn/${currentWeather.weather.icon}@2x.png`} className='icon'></img>
                     <div className='description'>{currentWeather.weather.description}</div>
                 </div>
