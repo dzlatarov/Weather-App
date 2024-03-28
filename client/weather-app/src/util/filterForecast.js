@@ -9,7 +9,7 @@ const filterForecast = (data) => {
   // );
 
   // let nextDaysProp = date.setDate(date.getDate() + 4);
-  let nextDate = new Date(date.setDate(date.getDate() + 4));
+  let nextDate = new Date(new Date().setDate(new Date().getDate() + 4));
   // console.log(
   //   `Extended date ${nextDate.toLocaleDateString()} : Time ${nextDate.toLocaleTimeString()}`
   // );

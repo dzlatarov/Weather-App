@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 import './SingleWeather.css'
 import daysConverter from '../../util/daysConverter'
 import { clearForecastData, clearWeatherDetails } from '../../state/weather/weatherSlice'
@@ -11,7 +10,6 @@ const SingleWeather = () => {
   const currentWeather = useSelector(state => state.weather.value)
   const forecastList = useSelector(state => state.weather.forecast)
   const dispatch = useDispatch()
-  const navigate = useNavigate()
   const filteredData = forecastList.length > 0 && currentWeather.length > 0 && filterForecastForSingleDay(forecastList, currentWeather)
   console.log(`Filtered data from SingleWeather is ${filteredData}`)
 
