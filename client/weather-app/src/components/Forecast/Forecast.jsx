@@ -84,7 +84,7 @@ const Forecast = (forecastListDumpData, unit) => {
               <span className='temperatureWrapper'>
                 {element.main.temp.toFixed(0)}
                 <span className='symbol'>o</span>
-                {units !== undefined && (<span>{units === 'metric' ? 'C' : 'F'}</span>)}
+                {unit !== undefined && (<span>{unit === 'metric' ? 'C' : 'F'}</span>)}
                 {/* {filteredList.dt_txt !== undefined && (<span>{utcConverter(filteredList.dt_txt)}</span>)} */}
           </span>
           <span>{utcConverter(element.dt_txt).toLocaleTimeString()}</span>

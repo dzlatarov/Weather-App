@@ -21,8 +21,8 @@ const SingleWeather = () => {
         <div className='cardWrapper'>
                 <div className='descriptionWrapper'>
                    <div className='date'>{daysConverter(unixTimestampConvertor(data[0].dt))}</div>
-                    <img src={`https://openweathermap.org/img/wn/${data[0].weather.icon}@2x.png`} className='icon'></img>
-                    <div className='description'>{data[0].weather.description}</div>
+                    <img src={`https://openweathermap.org/img/wn/${data[0].weather[0].icon}@2x.png`} className='icon'></img>
+                    <div className='description'>{data[0].weather[0].description}</div>
                 </div>
                 {/* <div className='temperatureWrapper'>
                       <span>{data[0].temperature.toFixed(0)}</span>

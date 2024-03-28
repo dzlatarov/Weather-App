@@ -1499,9 +1499,9 @@ function App() {
     console.log(`longtitude ${longtitude}`)
 
     // if (latitude !== '' && longtitude !== '') {
-    //   const response = weather.get(`?lat=${latitude}&lon=${longtitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}&units=${units}`).then((response) => {
-    //     setCurrentWeather({ dt: response.data.dt, weather: response.data.weather[0], temperature: response.data.main.temp})
-    //     console.log(response.data.main.temp)
+    //   weather.get(`?lat=${latitude}&lon=${longtitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}&units=${unit}`).then((response) => {
+    //      console.log(response.data)
+    //         setCurrentWeather(response.data)
     //   })
     // }
       setCurrentWeather({ "coord": {

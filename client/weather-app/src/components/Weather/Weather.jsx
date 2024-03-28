@@ -60,7 +60,7 @@ const Weather = ({ currentWeather, unit }) => {
                 <div className='temperatureWrapper'>
                       <span>{currentWeather.main.temp.toFixed(0)}</span>
                       <span className='symbol'>o</span>
-                      {units !== undefined && (<span>{ units === 'metric' ? 'C' : 'F'}</span>)}
+                      {unit !== undefined && (<span>{ unit === 'metric' ? 'C' : 'F'}</span>)}
                 </div>
             </div>
           )}
