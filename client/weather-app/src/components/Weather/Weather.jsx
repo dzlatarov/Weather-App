@@ -15,8 +15,8 @@ const Weather = ({ currentWeather, unit }) => {
     
     useEffect(() => {
         if (currentWeather.weather != undefined) {
-            console.log(`current weather object is ${currentWeather.weather.icon}`)
-            console.log(`current weather object is ${currentWeather.temperature.toFixed(0)}`)
+            console.log(`current weather object is ${currentWeather.weather[0].icon}`)
+            console.log(`current weather object is ${currentWeather.main.temp.toFixed(0)}`)
         }   
         
     }, [currentWeather, unit])
@@ -39,7 +39,7 @@ const Weather = ({ currentWeather, unit }) => {
   const addDetails = () => {
     dispatch(addWeatherDetails(currentWeather))
 
-    console.log(`weather details ${currentWeather.weather.icon}`)
+    console.log(`weather details ${currentWeather.weather[0].icon}`)
     navigate('/singleWeather')
   }
     
@@ -54,11 +54,11 @@ const Weather = ({ currentWeather, unit }) => {
             <div className='cardWrapper'>
                 <div className='descriptionWrapper'>
                    <div data-testid='date' className='date'>{daysConverter(unixTimestampConvertor(currentWeather.dt))}</div>
-                    <img src={`https://openweathermap.org/img/wn/${currentWeather.weather.icon}@2x.png`} className='icon'></img>
-                    <div className='description'>{currentWeather.weather.description}</div>
+                    <img src={`https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`} className='icon'></img>
+                    <div className='description'>{currentWeather.weather[0].description}</div>
                 </div>
                 <div className='temperatureWrapper'>
-                      <span>{currentWeather.temperature.toFixed(0)}</span>
+                      <span>{currentWeather.main.temp.toFixed(0)}</span>
                       <span className='symbol'>o</span>
                       {units !== undefined && (<span>{ units === 'metric' ? 'C' : 'F'}</span>)}
                 </div>
