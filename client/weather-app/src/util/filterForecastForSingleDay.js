@@ -4,9 +4,15 @@ import unixTimestampConvertor from "./unixTimeStampConvertor";
 const filterForecastForSingleDay = (forecastList, currentWeather) => {
   let filteredArray = [];
   if (forecastList !== undefined && currentWeather !== undefined) {
-    let currentDayOfWeek = daysConverter(
-      unixTimestampConvertor(currentWeather[[0]].dt)
-    );
+    let currentDayOfWeek = "";
+    if (currentWeather[0].dt != undefined) {
+      currentDayOfWeek = daysConverter(
+        unixTimestampConvertor(currentWeather[0].dt)
+      );
+    } else {
+      //   return currentWeather[0].forecastByHours;
+      currentDayOfWeek = currentWeather[0].dayName;
+    }
 
     for (const weather of forecastList) {
       let day = daysConverter(unixTimestampConvertor(weather.dt));

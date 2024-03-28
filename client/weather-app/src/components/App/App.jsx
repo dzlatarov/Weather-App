@@ -1542,16 +1542,16 @@ function App() {
 
   const callForecastAPI = () => {
     // forecast.get(`?lat=${latitude}&lon=${longtitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}&units=${unit}`).then((response) => {
-    //     setForecastList(response.data.list)
+    //     // setForecastList(response.data.list)
     //     dispatch(addForecastData(response.data.list))
     //   })
      dispatch(addForecastData(forecastListDDump))
-    setForecastList(forecastListDDump)
+    // setForecastList(forecastListDDump)
   }
 
     const savePreferences = (value) => {
       localStorage.setItem("unit", value)
-      setUnit(value)  
+      setUnit(value)
   }
 
 
@@ -1563,7 +1563,7 @@ function App() {
                 <button className='imperialWrapper' onClick={() => savePreferences('imperial')}>imperial</button>
             </div>
               <Weather currentWeather={currentWeather} unit={unit}/>
-              <Forecast forecast={forecastList} unit={unit} />
+              <Forecast unit={unit} />
         </div>
     </>
   )

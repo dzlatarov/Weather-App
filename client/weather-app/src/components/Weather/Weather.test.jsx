@@ -7,16 +7,52 @@ import { BrowserRouter } from 'react-router-dom';
 
 describe("Weather renders correct data", () => {
   const initialStore = {
-    weather: []
+    weather: [],
+    forecast: [],
   }
   const mockStore = configureStore()
   let store
-  const data = {
-    dt: 1711524828,
-    weather: { id: 802, description: "scattered clouds", icon: "03d" },
-    temperature: 11.01,
-    unit: "metric",
-  };
+  const data = {"coord": {
+        "lon": 23.36,
+        "lat": 42.65
+    },
+    "weather": [
+        {
+            "id": 801,
+            "main": "Clouds",
+            "description": "few clouds",
+            "icon": "02d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 20.82,
+        "feels_like": 19.69,
+        "temp_min": 20.6,
+        "temp_max": 21.46,
+        "pressure": 1011,
+        "humidity": 28
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 4.63,
+        "deg": 210
+    },
+    "clouds": {
+        "all": 20
+    },
+    "dt": 1711629903,
+    "sys": {
+        "type": 2,
+        "id": 2033225,
+        "country": "BG",
+        "sunrise": 1711599320,
+        "sunset": 1711644451
+    },
+    "timezone": 7200,
+    "id": 731061,
+    "name": "Sofia-Capital",
+    "cod": 200};
 
   it('Should render correct date', () => {
     store = mockStore(initialStore)
@@ -29,7 +65,7 @@ describe("Weather renders correct data", () => {
     )
 
     const dateValue = getByTestId("date").textContent;
-    expect(dateValue).toEqual("Wednesday");
+    expect(dateValue).toEqual("Thursday");
   })
   
   // const { getByTestId } = render(<Weather currentWeather={data} />);

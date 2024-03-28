@@ -5,6 +5,7 @@ import daysConverter from '../../util/daysConverter'
 import { clearForecastData, clearWeatherDetails } from '../../state/weather/weatherSlice'
 import unixTimestampConvertor from '../../util/unixTimeStampConvertor'
 import filterForecastForSingleDay from '../../util/filterForecastForSingleDay'
+import utcConverter, { utcConverterDate } from '../../util/utcConverter'
 
 const SingleWeather = () => { 
   const currentWeather = useSelector(state => state.weather.value)
@@ -23,20 +24,30 @@ const SingleWeather = () => {
   },[])
   return (
     <div className='singleWeatherWrapper'>
-      {filteredData && filteredData.length > 0 && filteredData.map((element, index) =>
-        <div key={index} className='card'>
-                <div className='descriptionWrapper'>
-                   <div className='date'>{daysConverter(unixTimestampConvertor(element.dt))}</div>
-                    <img src={`https://openweathermap.org/img/wn/${element.weather[0].icon}@2x.png`} className='icon'></img>
-                    <div className='description'>{element.weather[0].description}</div>
-                </div>
-                {/* <div className='temperatureWrapper'>
-                      <span>{data[0].temperature.toFixed(0)}</span>
-                      <span className='symbol'>o</span>
-                      <span>{ data[0].unit.units === 'metric' ? 'C' : 'F'}</span>
-                </div> */}
+      {filteredData && filteredData.length > 0 && (
+        <div className='date-month-wrapper'>
+          <div className='date'>{daysConverter(unixTimestampConvertor(filteredData[0].dt))}</div>
+          <div className='month'>{utcConverterDate(filteredData[0].dt_txt)}</div>
         </div>
       )}
+      <div className='cardHolder'>
+        {filteredData && filteredData.length > 0 && filteredData.map((element, index) =>
+          <div key={index} className='card'>
+              <div className='descriptionWrapper'>
+                  <img src={`https://openweathermap.org/img/wn/${element.weather[0].icon}@2x.png`} className='icon'></img>
+                  <div className='description'>{element.weather[0].description}</div>
+              </div>
+              <div className='temperatureWrapper'>
+                    <span>{element.main.temp.toFixed(0)}</span>
+                    <span className='symbol'>o</span>
+                    {/* <span>{ unit === 'metric' ? 'C' : 'F'}</span> */}
+                </div>
+              <div className='timeWrapper'>
+              <span>{utcConverter(element.dt_txt).toLocaleTimeString('default', {hour: '2-digit', minute: '2-digit'})}</span>
+              </div>
+          </div>
+          )}
+      </div>
     </div>
   )
 }

@@ -1,5 +1,15 @@
 .singleWeatherWrapper {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
+    text-align: center;
+
+    .date-month-wrapper {
+        .month {
+            margin-bottom: 16px;
+        }
+    }
+    
+    .cardHolder {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+    }
 }
