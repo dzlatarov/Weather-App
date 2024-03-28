@@ -8,8 +8,8 @@ const utcConverter = (utcDate) => {
   console.log(`Current Date ${currentTime.toLocaleDateString()}`);
   console.log(`Current Time ${currentTime.toLocaleTimeString()}`);
   let convertedDt = new Date(Date.parse(`${utcDate} UTC`));
-  console.log(`Converted Date ${convertedDt.toLocaleDateString()}}`);
-  console.log(`Converted Time ${convertedDt.toLocaleTimeString()}}`);
+  // console.log(`Converted Date ${convertedDt.toLocaleDateString()}}`);
+  // console.log(`Converted Time ${convertedDt.toLocaleTimeString()}}`);
   return convertedDt;
 };
 

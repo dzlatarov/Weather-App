@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import './App.css'
 import weather from '../../apis/weather'
 import forecast from '../../apis/forecast'
 import Weather from '../Weather/Weather'
 import Forecast from '../Forecast/Forecast'
 import utcConverter from '../../util/utcConverter'
+import { addForecastData } from '../../state/weather/weatherSlice'
 
 
 function App() {
@@ -15,6 +17,7 @@ function App() {
   const [unit, setUnit] = useState('metric')
   const [forecastList, setForecastList] = useState([])
   let units = localStorage.getItem("unit")  
+  const dispatch = useDispatch()
     
   const forecastListDDump = [
     {
@@ -1465,12 +1468,11 @@ function App() {
   useEffect(() => {
     if (latitude === '' && longtitude === '') {
       getLocation()
-      convert()
     } else {
       callWeatherAPI()
       callForecastAPI()
     }
-  }, [latitude, longtitude])
+  }, [latitude, longtitude, unit])
 
   const getLocation = () => {
     if (navigator.geolocation) {
@@ -1502,22 +1504,18 @@ function App() {
     //     console.log(response.data.main.temp)
     //   })
     // }
-      setCurrentWeather({ dt: 1711524828, weather: { id: 802, description: 'scattered clouds', icon: '03d' }, temperature: 11.01 , unit: {units}})
+      setCurrentWeather({ dt: 1711524828, weather: { id: 802, description: 'scattered clouds', icon: '03d' }, temperature: 11.01 , unit: {unit}})
   }
 
 
 
   const callForecastAPI = () => {
-    // const response = forecast.get(`?lat=${latitude}&lon=${longtitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}`).then((response) => {
+    // forecast.get(`?lat=${latitude}&lon=${longtitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}&units=${unit}`).then((response) => {
     //     setForecastList(response.data.list)
-    // })
+    //     dispatch(addForecastData(response.data.list))
+    //   })
+     dispatch(addForecastData(forecastListDDump))
     setForecastList(forecastListDDump)
-  }
-
-  const convert = () => {
-    let date = '2024-03-26 18:00:00'
-    let convertedDate = utcConverter(date)
-    console.log(`converted date ${convertedDate}`)
   }
 
     const savePreferences = (value) => {
@@ -1533,8 +1531,8 @@ function App() {
                 <button className='metricWrapper' onClick={() => savePreferences('metric')}>metric</button>
                 <button className='imperialWrapper' onClick={() => savePreferences('imperial')}>imperial</button>
             </div>
-              <Weather currentWeather={currentWeather} />
-              <Forecast forecast={forecastList} />
+              <Weather currentWeather={currentWeather} unit={unit}/>
+              <Forecast forecast={forecastList} unit={unit} />
         </div>
     </>
   )

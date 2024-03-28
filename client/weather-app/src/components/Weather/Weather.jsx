@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import weather from '../../apis/weather'
 import forecast from '../../apis/forecast'
 import unixTimestampConvertor from '../../util/unixTimeStampConvertor'
 import daysConverter from '../../util/daysConverter'
 import './Weather.css'
 import { useNavigate } from 'react-router-dom';
-import { addWeatherDetails, clearDetails } from '../../state/weather/weatherSlice'
+import { addWeatherDetails, clearWeatherDetails } from '../../state/weather/weatherSlice'
 
-const Weather = ({ currentWeather }) => {
+const Weather = ({ currentWeather, unit }) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   let units = localStorage.getItem("unit")
@@ -19,7 +19,7 @@ const Weather = ({ currentWeather }) => {
             console.log(`current weather object is ${currentWeather.temperature.toFixed(0)}`)
         }   
         
-    }, [currentWeather])
+    }, [currentWeather, unit])
 
 
   const getCurrentPosition = (position) => {
@@ -37,7 +37,6 @@ const Weather = ({ currentWeather }) => {
   }
 
   const addDetails = () => {
-    // addWeatherDetails(currentWeather.weather)
     dispatch(addWeatherDetails(currentWeather))
 
     console.log(`weather details ${currentWeather.weather.icon}`)
@@ -50,7 +49,7 @@ const Weather = ({ currentWeather }) => {
   //   })
   // }
   return (
-    <div data-testid='cypress-title' className='currentDate' onClick={addDetails}>
+    <div data-testid='cypress-title' className='currentDate' onClick={() => addDetails()}>
           {currentWeather && currentWeather.weather !== undefined && (
             <div className='cardWrapper'>
                 <div className='descriptionWrapper'>

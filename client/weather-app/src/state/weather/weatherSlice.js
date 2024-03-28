@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   value: [],
+  forecast: [],
 };
 
 const weatherSlice = createSlice({
@@ -12,12 +13,24 @@ const weatherSlice = createSlice({
       console.log(`Payload from slice ${action.payload}`);
       state.value.push(action.payload);
     },
-    clearDetails: (state) => {
-      state.value = {};
+    clearWeatherDetails: (state) => {
+      state.value = [];
+    },
+    addForecastData: (state = initialState, action) => {
+      console.log(`addForecastData from slice ${action.payload}`);
+      state.forecast = action.payload;
+    },
+    clearForecastData: (state = initialState) => {
+      state.forecast = [];
     },
   },
 });
 
-export const { addWeatherDetails, clearDetails } = weatherSlice.actions;
+export const {
+  addWeatherDetails,
+  clearWeatherDetails,
+  addForecastData,
+  clearForecastData,
+} = weatherSlice.actions;
 
 export default weatherSlice.reducer;
