@@ -1,3 +1,64 @@
+@media only screen and (max-width: 667px) {
+    .date-time-container {
+        margin-bottom: 24px;
+        flex-direction: column;
+        text-align: center;
+        gap: 0;
+
+        h2 {
+            font-size: 25px;
+        }
+    }
+
+    .forecast-by-hours {
+        display: flex;
+        flex-direction: column;
+
+        .forecast-element {
+            max-width: inherit;
+            flex-direction: row !important;
+
+            .temp {
+                margin-left: 16px;
+            }
+        }
+    }
+}
+
+@media(min-width: 480px) and (max-width: 990px) {
+    .forecast-by-hours {
+        display: flex;
+        flex-direction: column;
+
+        .forecast-element {
+            display: table !important;
+            margin: 0 auto;
+            max-width: inherit;
+            flex-direction: row !important;
+
+            .temp {
+                margin-left: 16px;
+            }
+        }
+    }
+}
+
+@media (max-width: 467px) {
+    .forecast-by-hours {
+        display: flex;
+        flex-direction: column;
+
+        .forecast-element {
+            display: flex !important;
+            max-width: inherit;
+
+            .temp {
+                margin-left: 16px;
+            }
+        }
+    }
+}
+
 .weather-panel {
     padding: 16px;
     background-image: url("https://unsplash.it/600/400?image=1043&blur");

@@ -24,3 +24,23 @@
     position: relative;
     left: 46px;
 }
+
+@media only screen and (max-width: 667px) {
+    .row {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+        .icon {
+            height: 350px;
+        }
+        .todays-info {
+            margin: 0;
+        }
+        .side-info {
+            left: 135px;
+            margin: 0 auto;
+            margin-top: 8px;
+        }
+    }
+}
