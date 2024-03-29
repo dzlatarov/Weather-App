@@ -10,7 +10,6 @@ const filterForecastForSingleDay = (forecastList, currentWeather) => {
         unixTimestampConvertor(currentWeather[0].dt)
       );
     } else {
-      //   return currentWeather[0].forecastByHours;
       currentDayOfWeek = currentWeather[0].dayName;
     }
 
