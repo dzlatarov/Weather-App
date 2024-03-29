@@ -1,36 +1,6 @@
-body {
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: #eae6e2;
-    color: #444e54;
-}
-
-main {
-    margin-top: 30px;
-}
-
-hr {
-    max-width: 800px;
-    margin: 48px;
-    border: 1px solid #686d80;
-}
-
-button {
-    display: inline-block;
-    border: 2px solid #332b1d;
-    border-radius: 5px;
-    padding: 5px 10px;
-    font-family: "Montserrat", monospace;
-    font-size: 12px;
-    background-color: #d0cd8f;
-}
-
-button:hover {
-    background-color: #b9b559;
-}
-
 .current-weather {
     margin-top: 50px;
+    cursor: pointer;
 }
 
 .temp-title {
@@ -53,39 +23,4 @@ button:hover {
 .side-info {
     position: relative;
     left: 46px;
-}
-
-p,
-ul {
-    font-family: "Montserrat", monospace;
-    font-size: 15px;
-    padding: 0;
-}
-
-li {
-    list-style: none;
-}
-
-.week-forecast {
-    text-align: center;
-    font-family: "Montserrat", monospace;
-}
-
-.weather {
-    margin-top: 2px;
-    margin-bottom: 6px;
-    font-size: 14px;
-}
-
-h2 {
-    font-size: 48px;
-}
-
-h3 {
-    font-size: 22px;
-    margin-bottom: -18px;
-}
-
-span {
-    font-size: 20px;
 }

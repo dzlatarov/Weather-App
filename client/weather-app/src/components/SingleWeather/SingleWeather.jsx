@@ -40,7 +40,7 @@ const SingleWeather = () => {
                   <li key={index} className="forecast-element">
                     <span>{utcConverter(element.dt_txt).toLocaleTimeString("default", {hour: "2-digit", minute: "2-digit"})}</span>
                     <img src={`https://openweathermap.org/img/wn/${element.weather[0].icon}@2x.png`}></img>
-                    <span className='description'>{filteredData && filteredData[0].weather[0].description}</span>
+                    <span className='description'>{element.weather[0].description}</span>
                     <span>{element.main.temp.toFixed(0)}°{unit && unit === "metric" ? "C" : "F"}</span>
                   </li>
                   )}

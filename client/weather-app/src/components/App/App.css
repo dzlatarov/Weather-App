@@ -1,25 +1,54 @@
-/* .cardWrapper {
-  text-align: center;
-  width: 600px;
+body {
+  max-width: 900px;
   margin: 0 auto;
+  background-color: #eae6e2;
+  color: #444e54;
+}
 
-  .unitWrapper {
-    float: right;
-    .metricWrapper {
-        font-weight: bold;
-        font-size: 1rem;
-        font-family: 'Montserrat';
-        line-height: 20px;
-        color: white;
-        background-color: gray;
-    }
-    .imperialWrapper {
-      font-weight: bold;
-        font-size: 1rem;
-        font-family: 'Montserrat';
-        line-height: 20px;
-        color: white;
-        background-color: gray;
-    }
-  }
-} */
+.main {
+  margin-top: 50px;
+}
+
+hr {
+  max-width: 800px;
+  margin: 48px;
+  border: 1px solid #686d80;
+}
+
+button {
+  display: inline-block;
+  border: 2px solid #332b1d;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-family: "Montserrat", monospace;
+  font-size: 12px;
+  background-color: #d0cd8f;
+}
+
+button:hover {
+  background-color: #b9b559;
+}
+
+p,
+ul {
+  font-family: "Montserrat", monospace;
+  font-size: 15px;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+h2 {
+  font-size: 48px;
+}
+
+h3 {
+  font-size: 22px;
+  margin-bottom: -18px;
+}
+
+span {
+  font-size: 20px;
+}
