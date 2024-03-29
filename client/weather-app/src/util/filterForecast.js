@@ -81,39 +81,11 @@ export const filter = (data) => {
       dayName: daysConverter(utcConverter(forecastList[0].dt_txt).getDay()),
       forecastByHours: forecastList,
       description: forecastList[0].weather[0].description,
-      temp: forecastList[0].main.temp,
+      temp: forecastList[0].main.temp.toFixed(0),
     });
   }
 
   return result;
 };
-
-[
-  {
-    date: "3/29/2024",
-    minTemp: 8.73,
-    maxTemp: 20.9,
-  },
-  {
-    date: "3/30/2024",
-    minTemp: 10.83,
-    maxTemp: 22.68,
-  },
-  {
-    date: "3/31/2024",
-    minTemp: 11.2,
-    maxTemp: 23.38,
-  },
-  {
-    date: "4/1/2024",
-    minTemp: 12.18,
-    maxTemp: 26.11,
-  },
-  {
-    date: "4/2/2024",
-    minTemp: 12.41,
-    maxTemp: 19.28,
-  },
-];
 
 export default filterForecast;
