@@ -1,53 +1,91 @@
-.currentDate {
-    padding: 36px;
-    background-color: skyblue;
+body {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #eae6e2;
+    color: #444e54;
+}
 
-    .unitWrapper {
-        width: 4rem;
-        float: right;
-    }
+main {
+    margin-top: 30px;
+}
 
-    .cardWrapper {
-        display: flex;
-        justify-content: center;
+hr {
+    max-width: 800px;
+    margin: 48px;
+    border: 1px solid #686d80;
+}
 
-        .temperatureWrapper {
-            width: 50%;
-            align-self: center;
+button {
+    display: inline-block;
+    border: 2px solid #332b1d;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-family: "Montserrat", monospace;
+    font-size: 12px;
+    background-color: #d0cd8f;
+}
 
+button:hover {
+    background-color: #b9b559;
+}
 
-            .symbol {
-                font-size: 30px;
-                position: relative;
-                bottom: 30px;
-            }
-        }
-    }
+.current-weather {
+    margin-top: 50px;
+}
 
-    .date {
-        font-family: 'Montserrat';
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 20px;
-        color: white;
-        text-transform: capitalize;
-    }
+.temp-title {
+    font-size: 140px;
+    font-family: "Inter", sans-serif;
+    text-align: center;
+}
 
-    .description {
-        font-family: 'Montserrat';
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 20px;
-        color: white;
-        text-transform: capitalize;
-    }
+.icon {
+    height: 150px;
+    position: relative;
+    bottom: 50px;
+    right: 10px;
+}
 
-    .temperatureWrapper{
-        font-family: 'Montserrat';
-        font-weight: 700;
-        font-size: 60px;
-        line-height: 20px;
-        color: white;
-        text-transform: capitalize;
-    }
+.todays-info {
+    margin: 15px 0;
+}
+
+.side-info {
+    position: relative;
+    left: 46px;
+}
+
+p,
+ul {
+    font-family: "Montserrat", monospace;
+    font-size: 15px;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.week-forecast {
+    text-align: center;
+    font-family: "Montserrat", monospace;
+}
+
+.weather {
+    margin-top: 2px;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+h2 {
+    font-size: 48px;
+}
+
+h3 {
+    font-size: 22px;
+    margin-bottom: -18px;
+}
+
+span {
+    font-size: 20px;
 }

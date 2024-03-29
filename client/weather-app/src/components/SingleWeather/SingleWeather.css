@@ -1,15 +1,50 @@
-.singleWeatherWrapper {
-    text-align: center;
+.main {
+    margin-top: 50px;
+}
 
-    .date-month-wrapper {
-        .month {
+.weather-panel {
+    padding: 16px;
+    background-image: url("https://unsplash.it/600/400?image=1043&blur");
+    background-size: cover;
+    border-radius: 20px;
+    box-shadow: 25px 25px 40px 0px rgba(0, 0, 0, 0.33);
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+
+    .date-time-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        .current-day {
+            text-align: center;
             margin-bottom: 16px;
         }
     }
-    
-    .cardHolder {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
+
+    .temperature {
+        &>span {
+            font-size: 2em;
+        }
+    }
+
+    .forecast-container {
+        
+        .forecast-by-hours {
+            margin: 5px 0 16px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .forecast-element {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+
+
+            .description {
+                margin-bottom: 16px;
+            }
+        }
     }
 }

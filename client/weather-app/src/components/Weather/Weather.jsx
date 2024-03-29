@@ -1,10 +1,11 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import unixTimestampConvertor from '../../util/unixTimeStampConvertor'
+import unixTimestampConvertor, { unixTimeStampToDate } from '../../util/unixTimeStampConvertor'
 import daysConverter from '../../util/daysConverter'
 import './Weather.css'
 import { useNavigate } from 'react-router-dom';
 import { addWeatherDetails } from '../../state/weather/weatherSlice'
+import utcConverter from '../../util/utcConverter'
 import { filter } from '../../util/filterForecast'
 
 const Weather = ({ currentWeather, unit }) => {
@@ -31,22 +32,28 @@ const Weather = ({ currentWeather, unit }) => {
   }
 
   return (
-    <div data-testid='cypress-title' className='currentDate' onClick={() => addDetails()}>
-          {currentWeather && currentWeather.weather && (
-            <div className='cardWrapper'>
-                <div className='descriptionWrapper'>
-                   <div data-testid='date' className='date'>{daysConverter(unixTimestampConvertor(currentWeather.dt))}</div>
-                    <img src={`https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`} className='icon'></img>
-                    <div className='description'>{currentWeather.weather[0].description}</div>
-                </div>
-                <div className='temperatureWrapper'>
-                      <span>{currentWeather.main.temp.toFixed(0)}</span>
-                      <span className='symbol'>o</span>
-                      {unit !== undefined && (<span>{ unit === 'metric' ? 'C' : 'F'}</span>)}
-                </div>
+      <section data-testid='cypress-title' className="current-weather" onClick={() => addDetails()}>
+        {currentWeather && currentWeather.weather && (
+          <div className="weather-container">
+            <div className="row">
+              <h1 className="col temp-title" id="current-temperature">{currentWeather.main.temp.toFixed(0)}°{unit && unit === 'metric' ? 'C' : 'F'}</h1>
+              <img src={`https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`} className='icon'></img>
+              <div className="col todays-info">
+                <p id="current-time">{utcConverter(unixTimeStampToDate(currentWeather.dt)).toLocaleTimeString('default', {hour: '2-digit', minute: '2-digit'})}</p>
+                <h2 data-testid='date' id="current-day">{daysConverter(unixTimestampConvertor(currentWeather.dt))}</h2>
+                <p id="weather-type">{currentWeather.weather[0].description}</p>
+              </div>
+              <div className="col d-flex align-items-center side-info">
+                <ul>
+                  <li>Humidity: <span id="humidity">{currentWeather.main.humidity}</span></li>
+                  <li>Wind: <span id="wind">{currentWeather.wind.speed}</span></li>
+                </ul>
+              </div>
             </div>
-          )}
-    </div>
+          </div>
+        )}
+        <hr />
+      </section>
   )
 }
 

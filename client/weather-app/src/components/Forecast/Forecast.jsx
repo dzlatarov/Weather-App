@@ -26,21 +26,37 @@ const Forecast = ({ unit }) => {
   }
 
   return (
-    <div className='forecast'>
-      {forecastList && forecastList.length > 0 && forecastList.filter((item, index) => index < 4).map((element, index) =>
-        <div key={index} className='forecastWrapper' onClick={() => showInDifferentPage(element)}>
-              <span className='dateWrapper'>{element.dayName}</span>
-              <img src={`https://openweathermap.org/img/wn/${element.icon}.png`} className='icon'></img>
-              <span className='temperatureWrapper'>
-                {element.mainTemp}
-                {element.maxTemp}
-                <span className='symbol'>o</span>
-                {unit && (<span>{unit === 'metric' ? 'C' : 'F'}</span>)}
-                {/* {filteredList.dt_txt !== undefined && (<span>{utcConverter(filteredList.dt_txt)}</span>)} */}
-          </span>
+    <>
+      <section className="container">
+        <div className="row week-forecast">
+          {forecastList && forecastList.length > 0 && forecastList.filter((item, index) => index < 4).map((element, index) =>
+            <div key={index} className="col" onClick={() => showInDifferentPage(element)}>
+              <h3>{element.dayName}</h3>
+            <br /><img
+              src={`https://openweathermap.org/img/wn/${element.icon}.png`}
+            /><br />
+              <p className="weather">{element.description}</p>
+              <span>{element.temp}°{unit && unit === 'metric' ? 'C' : 'F'}</span>
+          </div>
+          )}
         </div>
-      )}
-    </div>
+      </section>
+      {/* <div className='forecast'> */}
+        {/* {forecastList && forecastList.length > 0 && forecastList.filter((item, index) => index < 4).map((element, index) => */}
+          {/* // <div key={index} className='forecastWrapper' onClick={() => showInDifferentPage(element)}>
+          //       <span className='dateWrapper'>{element.dayName}</span>
+          //       <img src={`https://openweathermap.org/img/wn/${element.icon}.png`} className='icon'></img>
+          //       <span className='temperatureWrapper'>
+          //         {element.mainTemp}
+          //         {element.maxTemp}
+          //         <span className='symbol'>o</span>
+          //         {unit && (<span>{unit === 'metric' ? 'C' : 'F'}</span>)}
+          //         {/* {filteredList.dt_txt !== undefined && (<span>{utcConverter(filteredList.dt_txt)}</span>)} */}
+          {/* //   </span> */}
+          {/* // </div> */}
+        {/* //)} */}
+      {/* </div> */}
+    </>
   )
 }
 
