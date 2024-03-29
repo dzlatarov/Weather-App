@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import './SingleWeather.css'
 import daysConverter from '../../util/daysConverter'
 import { clearForecastData, clearWeatherDetails } from '../../state/weather/weatherSlice'
-import unixTimestampConvertor from '../../util/unixTimeStampConvertor'
+import unixTimestampConvertor, { unixTimeStampToDate } from '../../util/unixTimeStampConvertor'
 import filterForecastForSingleDay from '../../util/filterForecastForSingleDay'
-import utcConverter, { utcConverterDate } from '../../util/utcConverter'
+import { utcConverterDate } from '../../util/utcConverter'
 
 const SingleWeather = () => { 
   const currentWeather = useSelector(state => state.weather.value)
@@ -32,7 +32,7 @@ const SingleWeather = () => {
                 <ul  className='forecast-by-hours'>
                   {filteredData && filteredData.length > 0 && filteredData.map((element, index) =>
                     <li key={index} className='forecast-element'>
-                      <span>{utcConverter(element.dt_txt).toLocaleTimeString('default', {hour: '2-digit', minute: '2-digit'})}</span>
+                      <span>{unixTimeStampToDate(element.dt).toLocaleTimeString('default', {hour: '2-digit', minute: '2-digit'})}</span>
                       <img src={`https://openweathermap.org/img/wn/${element.weather[0].icon}@2x.png`}></img>
                       <span className='description'>{element.weather[0].description}</span>
                       <span className='temp'>{element.main.temp.toFixed(0)}°{unit && unit === 'metric' ? "C" : "F"}</span>

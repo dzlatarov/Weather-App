@@ -1,6 +1,6 @@
-import utcConverter from "./utcConverter";
 import { groupForecastByDay } from "./groupForecastByDay";
 import daysConverter from "./daysConverter";
+import { unixTimeStampToDate } from "./unixTimeStampConvertor";
 
 export const filter = (data) => {
   const forecastByDate = groupForecastByDay(data);
@@ -20,7 +20,7 @@ export const filter = (data) => {
       minTemp,
       maxTemp,
       icon: forecastList[0].weather[0].icon,
-      dayName: daysConverter(utcConverter(forecastList[0].dt_txt).getDay()),
+      dayName: daysConverter(unixTimeStampToDate(forecastList[0].dt).getDay()),
       forecastByHours: forecastList,
       description: forecastList[0].weather[0].description,
       temp: forecastList[0].main.temp.toFixed(0),

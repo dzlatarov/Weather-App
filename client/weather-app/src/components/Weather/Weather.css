@@ -23,6 +23,13 @@
 .side-info {
     position: relative;
     left: 46px;
+
+    .humidity-img {
+        width: 30px;
+    }
+    .wind-img {
+        width: 30px;
+    }
 }
 
 @media only screen and (max-width: 667px) {
