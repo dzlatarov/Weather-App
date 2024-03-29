@@ -1,17 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from '../src/components/App/App'
 import SingleWeather from './components/SingleWeather/SingleWeather'
-import { NotFoundPage } from './components/NotFoundPage/NotFoundPage'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { PageNotFound } from './components/PageNotFound/PageNotFound'
 import { store } from './state/store'
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <App />,
-        errorElement: <NotFoundPage />
+        errorElement: <PageNotFound />
     },
     {
         path: '/singleWeather',

@@ -1,0 +1,52 @@
+.error-container {
+    text-align: center;
+    background: #22232e;
+}
+
+.error-container img {
+    width: 420px;
+}
+
+.text {
+    padding: 40px 40px;
+}
+
+.text h1{
+    color: #00c2cb;
+    font-size: 35px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+
+
+@media screen and (max-width:600px) {
+    .error-container {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .text,
+    .image {
+        width: 100%;
+    }
+
+    .error-container {
+        min-width: 200px;
+        padding: 40px 0px;
+    }
+
+    .text {
+        display: block;
+        width: 100%;
+        padding: 20px 40px;
+    }
+
+    .image {
+        display: flex;
+        width: 200px;
+        align-self: center;
+        justify-content: center;
+        margin: auto;
+    }
+}
