@@ -26,7 +26,7 @@ const Forecast = ({ unit }) => {
       <div className='row week-forecast'>
         {forecastList && forecastList.length > 0 && forecastList.filter((item, index) => index < 4).map((element, index) =>
           <div key={index} className='col' onClick={() => showInDifferentPage(element)}>
-            <h3>{element.dayName}</h3>
+            <h3 data-testid='nextDay'>{element.dayName}</h3>
           <br /><img
             src={`https://openweathermap.org/img/wn/${element.icon}.png`}
           /><br />

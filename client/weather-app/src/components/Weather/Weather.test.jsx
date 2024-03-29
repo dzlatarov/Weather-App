@@ -1,5 +1,5 @@
 import Weather from "./Weather";
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { describe } from "vitest";
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
@@ -67,8 +67,4 @@ describe("Weather renders correct data", () => {
     const dateValue = getByTestId("date").textContent;
     expect(dateValue).toEqual("Thursday");
   })
-  
-  // const { getByTestId } = render(<Weather currentWeather={data} />);
-  // const dateValue = getByTestId("date").textContent;
-  // expect(dateValue).toEqual("Wednesday");
 });
