@@ -67,4 +67,26 @@ describe("Weather renders correct data", () => {
     const dateValue = getByTestId("date").textContent;
     expect(dateValue).toEqual("Thursday");
   })
+
+  it('Should display correct symbol for the metric unit', () => {
+    store = mockStore(initialStore)
+    const { container  } = render(<Provider store={store}>
+        <BrowserRouter>
+            <Weather unit='metric'/>
+        </BrowserRouter>
+    </Provider>)
+
+    expect(container.getElementsByClassName('current-temperature').item.toString()).toContain('C');
+  });
+  
+  it('Should display correct symbol for the imperial unit', () => {
+    store = mockStore(initialStore)
+    const { container  } = render(<Provider store={store}>
+        <BrowserRouter>
+            <Weather unit='imperial'/>
+        </BrowserRouter>
+    </Provider>)
+
+    expect(container.getElementsByClassName('current-temperature').item.toString()).toContain('F');
+  });
 });

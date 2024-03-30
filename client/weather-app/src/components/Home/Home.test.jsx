@@ -1512,5 +1512,5 @@ describe("Forecast renders correct data", () => {
         </Provider>)
 
         expect(container.getElementsByClassName('col').length).toEqual(4);
-    })
+    });
 })
