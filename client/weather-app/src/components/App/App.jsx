@@ -6,6 +6,7 @@ import forecast from '../../apis/forecast'
 import Weather from '../Weather/Weather'
 import Forecast from '../Forecast/Forecast'
 import { addForecastData } from '../../state/weather/weatherSlice'
+import { METRIC_UNIT, IMPERIAL_UNIT } from '../../constants'
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
     if (latitude !== '' && longtitude !== '') {
       weather.get(`?lat=${latitude}&lon=${longtitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}&units=${unit}`).then((response) => {
             setCurrentWeather(response.data)
+            setPreferences(unit)
       })
     }
   }
@@ -54,12 +56,17 @@ function App() {
   const callForecastAPI = () => {
     forecast.get(`?lat=${latitude}&lon=${longtitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}&units=${unit}`).then((response) => {
         dispatch(addForecastData(response.data.list))
+        setPreferences(unit)
       })
   }
 
     const savePreferences = (value) => {
-      localStorage.setItem("unit", value)
+      setPreferences(value)
       setUnit(value)
+  }
+
+  const setPreferences = (unit) => {
+    localStorage.setItem("unit", unit)
   }
 
 
@@ -67,8 +74,8 @@ function App() {
       <>
           <div className='cardWrapper'>
             <div className='unitWrapper'>
-                <button className='metricWrapper' onClick={() => savePreferences('metric')}>metric</button>
-                <button className='imperialWrapper' onClick={() => savePreferences('imperial')}>imperial</button>
+                <button className='metricWrapper' onClick={() => savePreferences(METRIC_UNIT)}>metric</button>
+                <button className='imperialWrapper' onClick={() => savePreferences(IMPERIAL_UNIT)}>imperial</button>
             </div>
               <Weather currentWeather={currentWeather} unit={unit}/>
               <Forecast unit={unit} />
