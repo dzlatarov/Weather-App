@@ -1,10 +1,51 @@
+import { render } from "@testing-library/react";
 import { describe } from "vitest";
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import { BrowserRouter } from 'react-router-dom';
+import Home from './Home';
 
 
 describe("Forecast renders correct data", () => {
     const initialStore = {
         weather: {
-            value: [],
+            value: [{"coord": {
+                "lon": 25.62,
+                "lat": 43.08
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04d"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 27.08,
+                "feels_like": 26.26,
+                "temp_min": 27.08,
+                "temp_max": 27.08,
+                "pressure": 1014,
+                "humidity": 24
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 3.6,
+                "deg": 130
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1711797074,
+            "sys": {
+                "type": 1,
+                "id": 6361,
+                "country": "BG",
+                "sunrise": 1711771352,
+                "sunset": 1711816859
+            }}],
             forecast: [ {
                 "dt": 1711800000,
                 "main": {
@@ -1458,6 +1499,18 @@ describe("Forecast renders correct data", () => {
                 "dt_txt": "2024-04-04 09:00:00"
             }]
         }
-        
     }
+    const mockStore = configureStore()
+    let store
+
+    it('Should display weather for 4 different days', () => {
+        store = mockStore(initialStore)
+        const { container  } = render(<Provider store={store}>
+            <BrowserRouter>
+                <Home />
+            </BrowserRouter>
+        </Provider>)
+
+        expect(container.getElementsByClassName('col').length).toEqual(4);
+    })
 })
