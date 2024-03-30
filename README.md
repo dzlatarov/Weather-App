@@ -7,12 +7,12 @@ Weather is react app that is displaying the forecasted weather for the next 5 da
 * Setup
 
 # General info
-This project takes 2 endpoints and after that it will disply the current weather and the forecast for upcoming day on the first page. After click on weather cards on first page you will be redirected to different page with the weather displayed for the current day by hours.
+This project takes 2 endpoints and after that it will display the current weather and the forecast for upcoming day on the first page. After click on weather cards on first page you will be redirected to different page with the weather displayed for the current day by hours.
 
 # Technologies
-For the creation of this project I have used javascript framework React, html and css.
+For the creation of this project I have used javascript library  React, html and css.
 For state management redux from @reduxjs/toolkit. For routing I have used react-router-dom.
-For the tests I have used vites with jest, cypress and storybook.
+For the tests I have used vites with jest, cypress.
 
 
 # Setup
