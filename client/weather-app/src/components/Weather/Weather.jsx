@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import unixTimestampConvertor, { unixTimeStampToDate } from '../../util/unixTimeStampConvertor'
 import daysConverter from '../../util/daysConverter'
@@ -9,9 +8,6 @@ import { addWeatherDetails } from '../../state/weather/weatherSlice'
 const Weather = ({ currentWeather, unit }) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-    
-  useEffect(() => { 
-  }, [currentWeather, unit])
 
   const addDetails = () => {
     dispatch(addWeatherDetails(currentWeather))

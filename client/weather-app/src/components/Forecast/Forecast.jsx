@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import  { filter } from '../../util/filterForecast'
@@ -11,10 +10,6 @@ const Forecast = ({ unit }) => {
 
   const { forecast } = useSelector(state => state.weather);
   const forecastList = filter(forecast).slice(1)
-  useEffect(() => {
-
-    console.log(`ForeCast from redux ${forecast}`)
-  }, [forecast, unit])
 
   const showInDifferentPage = (element) => {
     dispatch(addWeatherDetails(element))

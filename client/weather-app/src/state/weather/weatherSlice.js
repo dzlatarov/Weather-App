@@ -10,14 +10,12 @@ const weatherSlice = createSlice({
   initialState,
   reducers: {
     addWeatherDetails: (state = initialState, action) => {
-      console.log(`Payload from slice ${action.payload}`);
       state.value.push(action.payload);
     },
     clearWeatherDetails: (state) => {
       state.value = [];
     },
     addForecastData: (state = initialState, action) => {
-      console.log(`addForecastData from slice ${action.payload}`);
       state.forecast = action.payload;
     },
     clearForecastData: (state = initialState) => {
