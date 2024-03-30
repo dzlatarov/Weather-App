@@ -59,50 +59,59 @@
     }
 }
 
-.weather-panel {
-    padding: 16px;
-    background-image: url("https://unsplash.it/600/400?image=1043&blur");
-    background-size: cover;
-    border-radius: 20px;
-    box-shadow: 25px 25px 40px 0px rgba(0, 0, 0, 0.33);
-    color: #fff;
-    overflow: hidden;
-    position: relative;
+.container {
+    text-align: center;
 
-    .date-time-container {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        .current-day {
-            text-align: center;
-            margin-bottom: 16px;
-        }
-    }
-
-    .temperature {
-        &>span {
-            font-size: 2em;
-        }
-    }
-
-    .forecast-container {
-        
-        .forecast-by-hours {
-            margin: 5px 0 16px 0;
+    .weather-panel {
+        padding: 16px;
+        background-image: url("https://unsplash.it/600/400?image=1043&blur");
+        background-size: cover;
+        border-radius: 20px;
+        box-shadow: 25px 25px 40px 0px rgba(0, 0, 0, 0.33);
+        color: #fff;
+        overflow: hidden;
+        position: relative;
+    
+        .date-time-container {
             display: flex;
             justify-content: center;
-        }
-
-        .forecast-element {
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-
-
-            .description {
-                max-width: 90px;
+            gap: 20px;
+            .current-day {
+                text-align: center;
                 margin-bottom: 16px;
             }
         }
+    
+        .temperature {
+            &>span {
+                font-size: 2em;
+            }
+        }
+    
+        .forecast-container {
+            
+            .forecast-by-hours {
+                margin: 5px 0 16px 0;
+                display: flex;
+                justify-content: center;
+            }
+    
+            .forecast-element {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+    
+    
+                .description {
+                    max-width: 90px;
+                    margin-bottom: 16px;
+                }
+            }
+        }
+    }
+
+    .forecast-btn {
+        margin-top: 16px;
+        height: 60px;
     }
 }
