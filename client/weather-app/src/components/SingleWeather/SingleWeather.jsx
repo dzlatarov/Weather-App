@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import './SingleWeather.css'
 import daysConverter from '../../util/daysConverter'
-import { clearForecastData, clearWeatherDetails } from '../../state/weather/weatherSlice'
+import { clearForecastData, clearWeatherDetails, clearCityName } from '../../state/weather/weatherSlice'
 import unixTimestampConvertor, { unixTimeStampToDate } from '../../util/unixTimeStampConvertor'
 import filterForecastForSingleDay from '../../util/filterForecastForSingleDay'
 import { utcConverterDate } from '../../util/utcConverter'
@@ -22,6 +22,7 @@ const SingleWeather = () => {
     return () => {
       dispatch(clearForecastData())
       dispatch(clearWeatherDetails())
+      dispatch(clearCityName())
     };
   }, [])
 
