@@ -1,9 +1,9 @@
-import Weather from "./Weather";
 import { render } from "@testing-library/react";
 import { describe } from "vitest";
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { BrowserRouter } from 'react-router-dom';
+import Weather from "./Weather";
 
 describe("Weather renders correct data", () => {
   const initialStore = {

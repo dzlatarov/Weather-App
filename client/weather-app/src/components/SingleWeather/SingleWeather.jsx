@@ -14,7 +14,6 @@ const SingleWeather = ({ unit }) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const filteredData = forecastList.length > 0 && currentWeather.length > 0 && filterForecastForSingleDay(forecastList, currentWeather)
-  // let unit = localStorage.getItem("unit")
 
   useEffect(() => {
     return () => {
