@@ -51,3 +51,9 @@
         }
     }
 }
+
+@media (min-width: 375px) and (max-width: 667px) {
+    .city {
+        text-align: center;
+    }
+}

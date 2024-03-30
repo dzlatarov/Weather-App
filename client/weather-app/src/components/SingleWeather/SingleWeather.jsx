@@ -12,6 +12,7 @@ import { METRIC_UNIT, METRIC_SYMBOL, IMPERIAL_SYMBOL } from '../../constants'
 const SingleWeather = () => { 
   const currentWeather = useSelector(state => state.weather.value)
   const forecastList = useSelector(state => state.weather.forecast)
+  const cityName = useSelector(state => state.weather.city)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const filteredData = forecastList.length > 0 && currentWeather.length > 0 && filterForecastForSingleDay(forecastList, currentWeather)
@@ -32,9 +33,10 @@ const SingleWeather = () => {
     <>
       <div className='main container'>
         <div className='weather-panel'>
-            <div className='date-time-container'>
+            <div className='date-time-city-container'>
               <h2 className='current-day'>{filteredData && filteredData.length > 0 && daysConverter(unixTimestampConvertor(filteredData[0].dt))}</h2>
               <h2 className='current-date'>{filteredData && utcConverterDate(filteredData[0].dt_txt)}</h2>
+              <h2 className='city-name'>{cityName && cityName}</h2>
             </div>
             <div className='forecast-container'>
                   <ul  className='forecast-by-hours'>

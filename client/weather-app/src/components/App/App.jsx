@@ -5,7 +5,7 @@ import weather from '../../apis/weather'
 import forecast from '../../apis/forecast'
 import Weather from '../Weather/Weather'
 import Forecast from '../Forecast/Forecast'
-import { addForecastData } from '../../state/weather/weatherSlice'
+import { addForecastData, addCityName } from '../../state/weather/weatherSlice'
 import { METRIC_UNIT, IMPERIAL_UNIT } from '../../constants'
 
 
@@ -43,21 +43,25 @@ function App() {
     setLongtitute(position.coords.longitude.toFixed(2))
   }
 
-  const callWeatherAPI = () => {
+  const callWeatherAPI = async () => {
     if (latitude !== '' && longtitude !== '') {
-      weather.get(`?lat=${latitude}&lon=${longtitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}&units=${unit}`).then((response) => {
-            setCurrentWeather(response.data)
-            setPreferences(unit)
+      await weather.get(`?lat=${latitude}&lon=${longtitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}&units=${unit}`).then((response) => {
+          setCurrentWeather(response.data)
+          dispatch(addCityName(response.data.name))
+          setPreferences(unit)
       })
     }
   }
 
 
-  const callForecastAPI = () => {
-    forecast.get(`?lat=${latitude}&lon=${longtitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}&units=${unit}`).then((response) => {
+  const callForecastAPI = async () => {
+    if (latitude !== '' && longtitude !== '') {
+      await forecast.get(`?lat=${latitude}&lon=${longtitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}&units=${unit}`).then((response) => {
         dispatch(addForecastData(response.data.list))
+        dispatch(addCityName(response.data.city.name))
         setPreferences(unit)
       })
+    }
   }
 
     const savePreferences = (value) => {
@@ -74,11 +78,12 @@ function App() {
       <>
           <div className='cardWrapper'>
             <div className='unitWrapper'>
-                <button className='metricWrapper' onClick={() => savePreferences(METRIC_UNIT)}>metric</button>
-                <button className='imperialWrapper' onClick={() => savePreferences(IMPERIAL_UNIT)}>imperial</button>
+                <button className={`metricWrapper ${unit === METRIC_UNIT ? METRIC_UNIT : ''}`} onClick={() => savePreferences(METRIC_UNIT)}>metric</button>
+                <button className={`imperialWrapper ${unit === IMPERIAL_UNIT ? IMPERIAL_UNIT : ''}`} onClick={() => savePreferences(IMPERIAL_UNIT)}>imperial</button>
             </div>
-              <Weather currentWeather={currentWeather} unit={unit}/>
-              <Forecast unit={unit} />
+            <div className='city'>{currentWeather.name}</div>
+            <Weather currentWeather={currentWeather} unit={unit}/>
+            <Forecast unit={unit} />
         </div>
     </>
   )
