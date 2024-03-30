@@ -9,14 +9,12 @@ import filterForecastForSingleDay from '../../util/filterForecastForSingleDay'
 import { utcConverterDate } from '../../util/utcConverter'
 import { METRIC_UNIT, METRIC_SYMBOL, IMPERIAL_SYMBOL } from '../../constants'
 
-const SingleWeather = () => { 
-  const currentWeather = useSelector(state => state.weather.value)
-  const forecastList = useSelector(state => state.weather.forecast)
-  const cityName = useSelector(state => state.weather.city)
+const SingleWeather = ({ unit }) => { 
+  const {value: currentWeather, forecast: forecastList, city: cityName} = useSelector(state => state.weather)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const filteredData = forecastList.length > 0 && currentWeather.length > 0 && filterForecastForSingleDay(forecastList, currentWeather)
-  let unit = localStorage.getItem("unit")
+  // let unit = localStorage.getItem("unit")
 
   useEffect(() => {
     return () => {

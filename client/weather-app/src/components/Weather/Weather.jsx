@@ -4,6 +4,7 @@ import daysConverter from '../../util/daysConverter'
 import './Weather.css'
 import { useNavigate } from 'react-router-dom';
 import { addWeatherDetails } from '../../state/weather/weatherSlice'
+import unitMap from '../../util/unitMap';
 
 const Weather = ({ currentWeather, unit }) => {
   const dispatch = useDispatch()
@@ -11,7 +12,7 @@ const Weather = ({ currentWeather, unit }) => {
 
   const addDetails = () => {
     dispatch(addWeatherDetails(currentWeather))
-    navigate('/singleWeather')
+    navigate('/weather-details')
   }
 
   return (
@@ -19,7 +20,7 @@ const Weather = ({ currentWeather, unit }) => {
         {currentWeather && currentWeather.weather && (
           <div className='weather-container'>
             <div className='row'>
-              <h1 className='col temp-title' id='current-temperature'>{currentWeather.main.temp.toFixed(0)}°{unit && unit === 'metric' ? 'C' : 'F'}</h1>
+              <h1 className='col temp-title' id='current-temperature'>{currentWeather.main.temp.toFixed(0)}°{unitMap[unit]}</h1>
               <img src={`https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`} className='icon'></img>
               <div className='col todays-info'>
                 <p id='current-time'>{unixTimeStampToDate(currentWeather.dt).toLocaleTimeString('default', {hour: '2-digit', minute: '2-digit'})}</p>

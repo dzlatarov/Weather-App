@@ -1,0 +1,19 @@
+.cardWrapper {
+    .unitWrapper {
+  
+      button {
+        font-weight: bold;
+      }
+      .active {
+          background-color: white;
+      }
+      .metricWrapper {
+        margin-right: 4px;
+      }
+    }
+    .city {
+      margin-top: 16px;
+      font-family: "Inter", sans-serif;
+      font-size: 30px;
+    }
+  }

@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 describe("Weather renders correct data", () => {
   const initialStore = {
-    weather: [],
+    value: [],
     forecast: [],
   }
   const mockStore = configureStore()

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { METRIC_UNIT } from "../../constants";
 
 const initialState = {
   value: [],
@@ -27,7 +28,7 @@ const weatherSlice = createSlice({
     },
     clearCityName: (state) => {
       state.city = '';
-    },
+    }
   },
 });
 
